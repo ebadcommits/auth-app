@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext()
@@ -6,9 +6,17 @@ export const AuthContext = createContext()
 export function AuthProvider({children}) {
     const [user, setUser] = useState(null)
 
+    useEffect(() =>{
+        const savedUser = localStorage.getItem("user")
+        if(savedUser){
+            setUser(JSON.parse(savedUser))
+        }
+    }, [])
+
     function login(email, password) {
         if(email === "test@test.com" && password === "12345"){
             setUser({email})
+            localStorage.setItem("user", JSON.stringify(user))
             return {success: true}
         }
         return {success: false, message: "invalid credentials"}
@@ -16,6 +24,7 @@ export function AuthProvider({children}) {
 
     function logout(){
         setUser(null)
+        localStorage.removeItem("user")
     }
 
     return(
