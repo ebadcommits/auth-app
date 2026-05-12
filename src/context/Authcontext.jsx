@@ -9,14 +9,16 @@ export function AuthProvider({children}) {
     useEffect(() =>{
         const savedUser = localStorage.getItem("user")
         if(savedUser){
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setUser(JSON.parse(savedUser))
         }
     }, [])
 
     function login(email, password) {
         if(email === "test@test.com" && password === "12345"){
-            setUser({email})
-            localStorage.setItem("user", JSON.stringify(user))
+            const userData = {email}    
+            setUser(userData)
+            localStorage.setItem("user", JSON.stringify(userData))
             return {success: true}
         }
         return {success: false, message: "invalid credentials"}
