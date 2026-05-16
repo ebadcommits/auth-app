@@ -10,6 +10,7 @@ export default function Dashboard() {
         <nav className="flex flex-col space-y-3">
           <Link to={"/dashboardhome"} className="hover:text-gray-300">Home</Link>
           <Link to={"/dashboardprofile"} className="hover:text-gray-300">Profile</Link>
+          <Link to={"/Logout"} className="hover:text-gray-300">Logout</Link>
         </nav>
       </aside>
        
