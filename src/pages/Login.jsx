@@ -36,14 +36,14 @@ export default function Login() {
         <input 
         type="email"
         className="border p-2 round"
-        placeholder="email"
+        placeholder="test@test.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)} />
 
         <input 
         type="password"
         className="border p-2 round"
-        placeholder="password"
+        placeholder="12345"
         value={password}
         onChange={(e) => setPassord(e.target.value)} />
 
